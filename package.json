@@ -6,8 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "client": "cd client && npm start",
-    "dev": "concurrently -n 'server,client' -c 'pink,purple' \"nodemon server.js\" \"npm run client\""
+    "client": "cd client && npm run watch start",
+    "dev": "concurrently -n 'server,client' -c 'pink,purple' \"nodemon server.js --watch client --watch routes --watch models\" \"npm run client\""
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "./src"
+      ],
+      "extensions": "html,css,js,jsx",
+      "quiet": false
+    }
   },
   "keywords": [],
   "author": "",
