@@ -36,7 +36,7 @@ code {
   @apply bg-indigo-400
 }
 .nav {
-  @apply bg-blue-500 dark:bg-gray-900 shadow-xl;
+  @apply bg-primarylight dark:bg-gray-900 shadow-xl;
 }
 .nav-container{
   @apply w-full mx-auto px-2 sm:px-6 lg:px-2;
