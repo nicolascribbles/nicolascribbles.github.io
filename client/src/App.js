@@ -130,12 +130,12 @@ export default function App () {
             </div>
           </div>
         </div>
-       <MobileMenu />
-       </nav>
+        <MobileMenu />
+        </nav>
     
-        <div id="main" className="pt-16 absolute w-full h-full">
+        <div id="main" className="pt-16 absolute w-full h-full relative">
 
-          <div className="bg-indigo-100 z-2 shadow-lg dark:bg-gray-700 relative h-full min-h-screen md:w-50 lg:w-70 fixed">
+          <div className="bg-gray z-2 shadow-lg dark:bg-gray-700 relative h-full min-h-screen md:w-50 lg:w-70 fixed">
               <div className="xl:py-2 flex flex-col justify-start">
                  { colorTheme === "light" ?
                     <GithubPicture />
@@ -157,7 +157,7 @@ export default function App () {
                         <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-indigo-600 rounded-full text-xs z-1">{following}</span>
                       </span>
                     </div>
-                    <h1 className="font-mono uppercase font-bold text-lg">
+                    <h1 className="font-mono uppercase font-bold text-lg dark:color">
                       {name}
                     </h1>
                     <p className="text-xs py-2">
@@ -205,7 +205,7 @@ export default function App () {
                   </div>
                 </div>
               </div>
-          <div className="bg-indigo-200 z-0 dark:bg-gray-600 pt-8 overflow-auto pb-24" style={{maxHeight: '92.5vh'}}>
+          <div className="bg-pampas z-0 dark:bg-gray-600 pt-8 overflow-auto pb-24" style={{maxHeight: '92.5vh'}}>
 
             <Switch>
               <Route path="/about" component={About} />
