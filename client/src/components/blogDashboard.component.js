@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { EditorState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+
 import axios from 'axios';
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 class BlogDashboard extends React.Component {
 
@@ -7,7 +11,8 @@ class BlogDashboard extends React.Component {
     title: '',
     url: '',
     body: '',
-    posts: []
+    posts: [],
+    editorState:  EditorState.createEmpty()
   };
 
   componentDidMount = () => {
@@ -103,7 +108,13 @@ class BlogDashboard extends React.Component {
               value={this.state.body}
               onChange={this.handleChange} />
           </div>
-
+          <Editor
+            editorState={this.state.editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            onEditorStateChange={this.handleChange}
+          />
           <button>Submit</button>
         </form>
 
