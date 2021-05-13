@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class Blogs extends React.Component {
+class BlogDashboard extends React.Component {
 
   state = {
     title: '',
@@ -55,8 +55,6 @@ class Blogs extends React.Component {
       console.log('Internal server error')
     });
   };
-
-
 
   resetUserInputs = () => {
     this.setState({
@@ -118,4 +116,4 @@ class Blogs extends React.Component {
 }
 
 
-export default Blogs;
+export default BlogDashboard;
