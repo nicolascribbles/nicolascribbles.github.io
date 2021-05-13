@@ -23,8 +23,6 @@ export default function Login() {
     .then((data) => {
       setCookie([data])
       setToken(data.data.token)
-      console.log("Data: ", data)
-      console.log("Token: ", data.token)
      })
     .catch((err) => {
        return console.log(err)
@@ -40,7 +38,6 @@ export default function Login() {
   const compareThisPassword = (inputPassword, hash) => {
     bcrypt.compare(inputPassword, hash, (err, result) => {
       if (err) return console.log(err)
-      console.log("Validation says: ", result)
       setAuthentication(result)
     })
   }
@@ -66,7 +63,6 @@ export default function Login() {
       const isMatch = compareThisPassword(pass, data.data.password);
       console.log(authenticated)
       resetUserInputs();
-      console.log("Here!");
     })
     .catch((error) => {
       console.log('Internal server error: ', error)
