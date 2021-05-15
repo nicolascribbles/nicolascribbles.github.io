@@ -1,5 +1,4 @@
 {
-  "watch": ["**/**/*.*"],
-  "exec": "node",
-  "ext": "js, json"
+  "watch": ["/client/", "./routes", "./models"],
+  "ext": "html,css,js,json"
 }

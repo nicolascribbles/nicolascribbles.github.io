@@ -9,13 +9,34 @@ code {
 }
 
 #main {
-  display: grid;
-  grid-template-columns: 18rem auto;
+  display: flex;
+  padding-top: 4rem;
 }
-@media (min-width: 1200px) {
-  .xl\:pin-none { left: auto; }
-  #main { grid-template-columns: 15rem auto; }
+.sidebar {
+  width: 16rem;
 }
+.body {
+  flex: 1;
+  height: 97vh;
+}
+.social {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.social::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 130%;
+  height: 15%;
+  background: white;
+  transform-origin: 0 0;
+  transform: skewY(-29deg) translate(0, 50%);
+  z-index: 1;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
 
 #checkbox ~ .dot {
   @apply bg-primarylight;
@@ -33,7 +54,7 @@ code {
 
 #checkbox:checked ~ .dot {
   transform: translateX(100%);
-  @apply bg-indigo-400
+  @apply bg-cashmere-400
 }
 .nav {
   @apply bg-primarylight dark:bg-gray-900 shadow-xl;
@@ -88,4 +109,34 @@ code {
 }
 .input.last {
   @apply rounded-b-md;
+}
+
+
+@media (min-width: 640px) {
+  .social {
+    width: 100%;
+  }
+}
+@media (min-width: 640px) {
+}
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+  .xl\:pin-none { left: auto; }
+  .social::before {
+    width: 130%;
+    height: 30%;
+    background: white;
+    transform-origin: 0 0;
+    transform: skewY(-29deg) translate(0, 60%);
+    z-index: 1;
+  }
+  .social {
+    width: 65rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  
 }

@@ -23,7 +23,6 @@ import StoreSVG from "./svgs/store";
 
 import Toggle from "./layout/toggle";
 import MobileMenuButton from "./layout/mobileMenuButton";
-import MobileMenu from "./layout/mobileMenu";
 import LightLogo from "./layout/lightLogo";
 import DarkLogo from "./layout/darkLogo";
 import California from "./layout/california";
@@ -36,7 +35,6 @@ import BlogDashboard from './components/blogDashboard.component';
 
 import Home from './pages/home';
 import Blogs from './pages/blogPosts';
-import About from './pages/about';
 import Projects from './pages/projects';
 
 export default function App () {
@@ -111,9 +109,7 @@ export default function App () {
               <div className="desktop-menu-wrapper">
                 <div className="nav-link-wrapper">
 
-                  <NavLink to="/" exact className="nav-link" activeClassName="current">Welcome</NavLink>
-
-                  <NavLink to="/about" className="nav-link" activeClassName="current">About Me</NavLink>
+                  <NavLink to="/" exact className="nav-link" activeClassName="current">About Me</NavLink>
 
                   <NavLink to="/blog" className="nav-link" activeClassName="current">Blog</NavLink>
 
@@ -130,51 +126,70 @@ export default function App () {
             </div>
           </div>
         </div>
-        <MobileMenu />
+    
+        
+        <div className="mobile-nav" id="mobile-menu">
+          <div className="mobile-nav-wrapper">
+            <NavLink to="/" exact className="mobile-nav-link" activeClassName="current-mobile">About Me</NavLink>
+            <NavLink to="/projects" className="mobile-nav-link" activeClassName="current-mobile">Github Projects</NavLink>
+            <NavLink to="/blog" className="mobile-nav-link" activeClassName="current-mobile">Blog</NavLink>
+            { logged 
+                ? <NavLink to="/blog-dashboard" className="mobile-nav-link" activeClassName="current-mobile">Dashboard</NavLink>
+                : <NavLink to="/login" className="mobile-nav-link" activeClassName="current-mobile">Login</NavLink>
+            }
+            { logged 
+                ? <NavLink to="/logout" className="mobile-nav-link" activeClassName="current-mobile">Logout</NavLink>
+                : <></>
+            }
+          </div>
+        </div>
+    
         </nav>
     
-        <div id="main" className="pt-16 absolute w-full h-full relative">
+        <div id="main" className="pt-16 absolute relative">
 
-          <div className="bg-gray z-2 shadow-lg dark:bg-gray-700 relative h-full min-h-screen md:w-50 lg:w-70 fixed">
+          <div className="sidebar bg-gray z-2 shadow-lg dark:bg-gray-700 relative h-full min-h-screen md:w-50 lg:w-70 fixed">
               <div className="xl:py-2 flex flex-col justify-start">
-                 { colorTheme === "light" ?
-                    <GithubPicture />
-                    :
-                    <California />
-                 }
-                  <div className="hidden xl:block text-grey-darker px-4 pb-3">
+                  <div className="hidden md:block">
+                     { colorTheme === "light" ?
+                        <GithubPicture />
+                        :
+                        <California />
+                     }
+                  </div>
+                  <div className="hidden md:block text-grey-darker px-4 pb-3">
                     <div className="stats flex rounded bg-primarylight dark:bg-gray-800 mb-4 items-center justify-between w-full px-2">
                       <span className="relative flex dark:text-white" title="Followers">
                         <UserSVG className="h-4 z-2 relative dark:text-white" />
-                        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 mr-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-indigo-600 rounded-full text-xs z-1">{followers}</span>
+                        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 mr-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-cashmere rounded-full text-xs z-1">{followers}</span>
                       </span>
                       <span className="relative flex dark:text-white" title="Public Repositories">
                         <CodeSVG className="h-4 z-2 relative dark:text-white" />
-                        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-indigo-600 rounded-full text-xs z-1">{repos}</span>
+                        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-cashmere rounded-full text-xs z-1">{repos}</span>
                       </span>
                       <span className="relative flex dark:text-white" title="Following">
                         <UserCheckSVG className="h-4 z-2 relative" />
-                        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-indigo-600 rounded-full text-xs z-1">{following}</span>
+                        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-cashmere rounded-full text-xs z-1">{following}</span>
                       </span>
                     </div>
                     <h1 className="font-mono uppercase font-bold text-lg dark:color">
                       {name}
                     </h1>
                     <p className="text-xs py-2">
-                      I am a full stack software engineer currently working for <strong className="text-primarylight">Intrinio, Inc.</strong> As a Software Engineer, I am responsible for implementing visual elements for our web products and applications. I combine the art of design with the science of programming providing the hemispheric synchronization bridge between the two departments.I am responsible for the translation of UI/UX design wireframes to production-ready code.
+                      I am a full stack software engineer currently <strong className="text-primarylight">looking for work.</strong> As a Software Engineer, I am responsible for implementing visual elements for our web products and applications. I combine the art of design with the science of programming providing the hemispheric synchronization bridge between the two departments.I am responsible for the translation of UI/UX design wireframes to production-ready code.
                     </p>
                   </div>
                   <div className="hidden xl:block uppercase font-bold text-grey-darker text-xs px-4 py-2">
                     Main
                   </div>
                   <div className="group relative sidebar-item with-children">
-                    <NavLink to="/projects" className="block xl:flex xl:items-center text-center xl:text-left shadow-light xl:shadow-none py-6 xl:py-2 xl:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-indigo-400" activeClassName="bg-primarylight dark:bg-indigo-400">
+                    <NavLink to="/projects" className="flex xl:items-center text-center xl:text-left shadow-light xl:shadow-none py-6 xl:py-2 xl:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
                       <DashboardSVG />
                       <div className="text-black font-bold dark:text-white text-xs">View Github Projects</div>
                     </NavLink>
                   </div>
                   <div className="group relative sidebar-item with-children">
-                    <NavLink to="/contact" className="block xl:flex xl:items-center text-center xl:text-left shadow-light xl:shadow-none py-6 xl:py-2 xl:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-black" activeClassName="bg-primarylight dark:bg-indigo-400">
+                    <NavLink to="/contact" className="flex xl:items-center text-center xl:text-left shadow-light xl:shadow-none py-6 xl:py-2 xl:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
                       <CommentSVG />
                       <div className="text-black font-bold dark:text-white text-xs">Contact Me</div>
                     </NavLink>
@@ -205,10 +220,9 @@ export default function App () {
                   </div>
                 </div>
               </div>
-          <div className="bg-pampas z-0 dark:bg-gray-600 pt-8 overflow-auto pb-24" style={{maxHeight: '92.5vh'}}>
+          <div className="body bg-pampas z-0 dark:bg-gray-600 pt-8 overflow-auto pb-24">
 
             <Switch>
-              <Route path="/about" component={About} />
               <Route path="/projects" component={Projects} />
               <Route path="/blog" component={Blogs} />
               <Route path="/register" component={RegisterUsers} />
