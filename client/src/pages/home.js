@@ -80,7 +80,7 @@ export default function Home() {
       <figure className="social self-stretch x-20 lg:mx-auto pr-5 py-10 rounded-xl text-center bg-gradient-to-br to-cashmere dark:to-purple-400 from-cashmere-700 shadow-xl flex justify-between overflow-y-auto">
         <div className="h-32 md:h-56 w-1/3">
           <img className="ring-4 ring-offset-4 ring-offset-transparent ring-cashmere absolute visible dark:invisible w-32 h-32 md:w-56 md:h-56 rounded-full mx-auto z-10" src="bulma2.jpg" />
-          <img className="ring-4 ring-offset-4 ring-offset-transparent ring-merlin absolute invisible dark:visible w-32 h-32 md:w-56 md:h-56 rounded-full mx-auto z-10" src="kikyo.jpg" />
+          <img className="kikyo ring-4 ring-offset-4 ring-offset-transparent ring-merlin absolute invisible dark:visible w-32 h-32 md:w-56 md:h-56 rounded-full mx-auto z-10" src="kikyo.jpg" />
         </div>
         <div className="rounded-xl rotate-12 bg-cashmere-300 rotate-3" />
         <div className="information-about-me rounded-xl bg-white dark:bg-gray dark:text-white z-20 shadow-2xl h-52 self-end p-8">

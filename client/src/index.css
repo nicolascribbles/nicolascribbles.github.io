@@ -38,6 +38,24 @@ code {
 }
 
 
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  @apply bg-gray-200 dark:bg-gray-400
+}
+
+::-webkit-scrollbar
+{
+  width: 10px;
+  @apply bg-gray-200 dark:bg-gray-400;
+}
+
+::-webkit-scrollbar-thumb
+{
+  border: 2px solid #555555;
+  @apply bg-gray-500 dark:bg-gray-900;
+}
+
 #checkbox ~ .dot {
   @apply bg-primarylight;
 }
@@ -110,7 +128,10 @@ code {
 .input.last {
   @apply rounded-b-md;
 }
-
+.kikyo {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1)
+}
 
 @media (min-width: 640px) {
   .social {
