@@ -149,15 +149,15 @@ export default function App () {
         <div id="main" className="pt-16 absolute relative">
 
           <div className="sidebar bg-gray z-2 shadow-lg dark:bg-gray-700 relative h-full min-h-screen md:w-50 lg:w-70 fixed">
-              <div className="xl:py-2 flex flex-col justify-start">
-                  <div className="hidden md:block">
+              <div className="lg:py-2 flex flex-col justify-start">
+                  <div className="hidden sm:block">
                      { colorTheme === "light" ?
                         <GithubPicture />
                         :
                         <California />
                      }
                   </div>
-                  <div className="hidden md:block text-grey-darker px-4 pb-3">
+                  <div className="hidden sm:block text-grey-darker px-4 pb-3">
                     <div className="stats flex rounded bg-primarylight dark:bg-gray-800 mb-4 items-center justify-between w-full px-2">
                       <span className="relative flex dark:text-white" title="Followers">
                         <UserSVG className="h-4 z-2 relative dark:text-white" />
@@ -183,22 +183,22 @@ export default function App () {
                     Main
                   </div>
                   <div className="group relative sidebar-item with-children">
-                    <NavLink to="/projects" className="flex xl:items-center text-center xl:text-left shadow-light xl:shadow-none py-6 xl:py-2 xl:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
+                    <NavLink to="/projects" className="flex md:items-center text-center md:text-left shadow-light md:shadow-none py-6 md:py-2 md:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
                       <DashboardSVG />
-                      <div className="text-black font-bold dark:text-white text-xs">View Github Projects</div>
+                      <div className="hidden md:block text-black font-bold dark:text-white text-xs">View Github Projects</div>
                     </NavLink>
                   </div>
                   <div className="group relative sidebar-item with-children">
-                    <NavLink to="/contact" className="flex xl:items-center text-center xl:text-left shadow-light xl:shadow-none py-6 xl:py-2 xl:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
+                    <NavLink to="/contact" className="flex md:items-center text-center md:text-left shadow-light md:shadow-none py-6 md:py-2 md:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
                       <CommentSVG />
-                      <div className="text-black font-bold dark:text-white text-xs">Contact Me</div>
+                      <div className="hidden md:block text-black font-bold dark:text-white text-xs">Contact Me</div>
                     </NavLink>
                   </div>
                 </div>
 
 
                 <div className="py-4">
-                  <div className="hidden xl:block uppercase font-bold text-grey-darker text-xs px-4 py-2">
+                  <div className="hidden lg:block uppercase font-bold text-grey-darker text-xs px-4 py-2">
                     Controls
                   </div>
 
