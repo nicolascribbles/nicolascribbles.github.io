@@ -5,7 +5,7 @@ export default function Home() {
       <div className="flex flex-col-reverse xl:flex-row mb-10">
         
 
-        <div className="my-stats x-20 w-50 px-5 py-10 mt-10 lg:mr-5 lg:mt-0 rounded-xl text-center bg-gray dark:bg-merlin dark:text-pampas shadow-xl lg:flex justify-center overflow-y-auto">
+        <div className="my-stats x-20 w-50 px-5 py-10 mt-10 mt-20 xl:mt-0 xl:mr-5 lg:mt-0 rounded-xl text-center bg-gray dark:bg-merlin dark:text-pampas shadow-xl lg:flex justify-center overflow-y-auto">
           <div className="overflow-hidden">
             <div className="border-gray-200 border-2 rounded-lg">
               <dl>
