@@ -10,6 +10,7 @@ export default function Blogs() {
         const data = response.data;
         setPosts(data);
         console.log('Your data has arrived')
+        console.log(posts)
       })
       .catch(() => {
         alert('Your data failed');

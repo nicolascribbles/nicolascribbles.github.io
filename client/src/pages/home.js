@@ -5,7 +5,7 @@ export default function Home() {
       <div className="flex flex-col-reverse xl:flex-row mb-10">
         
 
-        <div className="my-stats x-20 w-50 px-5 py-10 mt-10 xl:mt-0 xl:mr-5 rounded-xl text-center bg-gray dark:bg-merlin dark:text-pampas shadow-xl lg:flex justify-center overflow-y-auto">
+        <div className="max-w-100 my-stats x-20 w-50 px-5 py-10 mt-10 xl:mt-0 xl:mr-5 rounded-xl text-center bg-gray dark:bg-merlin dark:text-pampas shadow-xl lg:flex justify-center overflow-y-auto">
           <div className="overflow-hidden">
             <div className="border-gray-200 border-2 rounded-lg">
               <dl>
@@ -77,7 +77,7 @@ export default function Home() {
           </div>
         </div>
     
-      <figure className="social self-stretch x-20 lg:mx-auto pr-5 py-10 rounded-xl text-center bg-gradient-to-br to-cashmere dark:to-purple-400 from-cashmere-700 shadow-xl flex justify-between overflow-y-auto">
+      <figure className="social max-w-100 self-stretch x-20 lg:mx-auto pr-5 py-10 rounded-xl text-center bg-gradient-to-br to-cashmere dark:to-purple-400 from-cashmere-700 shadow-xl flex justify-between overflow-y-auto">
         <div className="h-32 md:h-56 w-1/3">
           <img className="ring-4 ring-offset-4 ring-offset-transparent ring-cashmere absolute visible dark:invisible w-32 h-32 md:w-56 md:h-56 rounded-full mx-auto z-10" src="bulma2.jpg" />
           <img className="kikyo ring-4 ring-offset-4 ring-offset-transparent ring-merlin absolute invisible dark:visible w-32 h-32 md:w-56 md:h-56 rounded-full mx-auto z-10" src="kikyo.jpg" />
@@ -116,7 +116,7 @@ export default function Home() {
       </figure>
     
       </div>
-      <div className="mx-20 max-w-100 md:mx-auto px-5 py-10 rounded-xl text-center bg-gray dark:bg-merlin dark:text-pampas shadow-xl lg:flex justify-center overflow-y-auto">
+      <div className="max-w-100 px-5 py-10 rounded-xl text-center bg-gray dark:bg-merlin dark:text-pampas shadow-xl lg:flex justify-center overflow-y-auto">
         <div>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center">

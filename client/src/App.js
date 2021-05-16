@@ -20,8 +20,10 @@ import DashboardSVG from "./svgs/dashboard";
 import CommentSVG from "./svgs/comment";
 import BookmarkSVG from "./svgs/bookmark";
 import StoreSVG from "./svgs/store";
+import GithubSVG from "./svgs/github";
 
 import Toggle from "./layout/toggle";
+import MobileMenu from "./layout/mobileMenu";
 import MobileMenuButton from "./layout/mobileMenuButton";
 import LightLogo from "./layout/lightLogo";
 import DarkLogo from "./layout/darkLogo";
@@ -39,7 +41,6 @@ import Projects from './pages/projects';
 
 export default function App () {
   
-  const [colorTheme, setTheme] = useDarkMode();
   const [name, setName] = useState('');
   const [githubUsername, setGithubUsername] = useState('');
   const [followers, setFollowers] = useState('');
@@ -50,7 +51,9 @@ export default function App () {
   const [error, setError] = useState(null);
   const [secretToken, setToken] = useState('');
   const [logged, setLogged] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(false);
   
+  const [colorTheme, setTheme] = useDarkMode();
 
   useEffect(() => {
     // get github data
@@ -68,7 +71,6 @@ export default function App () {
       .catch((err) => {
         return console.log(err)
        });
-    
     
   }, [])
   
@@ -97,7 +99,7 @@ export default function App () {
        <nav className="nav fixed w-full z-50">
         <div className="nav-container">
           <div className="relative flex items-center justify-between h-16">
-            <MobileMenuButton />
+            <MobileMenuButton menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
             <div className="desktop-menu">
               <div className="menu-logo-wrapper">
                { colorTheme === "light" ?
@@ -126,23 +128,7 @@ export default function App () {
             </div>
           </div>
         </div>
-    
-        
-        <div className="mobile-nav" id="mobile-menu">
-          <div className="mobile-nav-wrapper">
-            <NavLink to="/" exact className="mobile-nav-link" activeClassName="current-mobile">About Me</NavLink>
-            <NavLink to="/projects" className="mobile-nav-link" activeClassName="current-mobile">Github Projects</NavLink>
-            <NavLink to="/blog" className="mobile-nav-link" activeClassName="current-mobile">Blog</NavLink>
-            { logged 
-                ? <NavLink to="/blog-dashboard" className="mobile-nav-link" activeClassName="current-mobile">Dashboard</NavLink>
-                : <NavLink to="/login" className="mobile-nav-link" activeClassName="current-mobile">Login</NavLink>
-            }
-            { logged 
-                ? <NavLink to="/logout" className="mobile-nav-link" activeClassName="current-mobile">Logout</NavLink>
-                : <></>
-            }
-          </div>
-        </div>
+        <MobileMenu logged={logged} menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
     
         </nav>
     
@@ -157,8 +143,8 @@ export default function App () {
                         <California />
                      }
                   </div>
-                  <div className="hidden sm:block text-grey-darker px-4 pb-3">
-                    <div className="stats flex rounded bg-primarylight dark:bg-gray-800 mb-4 items-center justify-between w-full px-2">
+                  <div className="text-grey-darker px-4 pb-3">
+                    <div className="hidden md:block stats flex rounded bg-primarylight dark:bg-gray-800 mb-4 items-center justify-between w-full px-2">
                       <span className="relative flex dark:text-white" title="Followers">
                         <UserSVG className="h-4 z-2 relative dark:text-white" />
                         <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 mr-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-cashmere rounded-full text-xs z-1">{followers}</span>
@@ -172,24 +158,24 @@ export default function App () {
                         <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-cashmere rounded-full text-xs z-1">{following}</span>
                       </span>
                     </div>
-                    <h1 className="font-mono uppercase font-bold text-lg dark:color">
+                    <h1 className="hidden md:block font-mono uppercase font-bold text-lg dark:color">
                       {name}
                     </h1>
-                    <p className="text-xs py-2">
+                    <p className="text-xs py-2 hidden md:block">
                       I am a full stack software engineer currently <strong className="text-primarylight">looking for work.</strong> As a Software Engineer, I am responsible for implementing visual elements for our web products and applications. I combine the art of design with the science of programming providing the hemispheric synchronization bridge between the two departments.I am responsible for the translation of UI/UX design wireframes to production-ready code.
                     </p>
                   </div>
-                  <div className="hidden xl:block uppercase font-bold text-grey-darker text-xs px-4 py-2">
+                  <div className="hidden md:block uppercase font-bold text-grey-darker text-xs px-4 py-2">
                     Main
                   </div>
-                  <div className="group relative sidebar-item with-children">
-                    <NavLink to="/projects" className="flex md:items-center text-center md:text-left shadow-light md:shadow-none py-6 md:py-2 md:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
-                      <DashboardSVG />
+                  <div className="group relative sidebar-item with-children mx:auto md:mx-0">
+                    <NavLink to="/projects" className="justify-center md:justify-start flex md:items-center text-center md:text-left shadow-light md:shadow-none py-6 md:py-2 md:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
+                      <GithubSVG />
                       <div className="hidden md:block text-black font-bold dark:text-white text-xs">View Github Projects</div>
                     </NavLink>
                   </div>
-                  <div className="group relative sidebar-item with-children">
-                    <NavLink to="/contact" className="flex md:items-center text-center md:text-left shadow-light md:shadow-none py-6 md:py-2 md:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
+                  <div className="group relative sidebar-item with-children mx:auto md:mx-0">
+                    <NavLink to="/contact" className="justify-center md:justify-start flex md:items-center text-center md:text-left shadow-light md:shadow-none py-6 md:py-2 md:px-4 border-l-4 border-transparent hover:bg-primarylight dark:hover:bg-cashmere-400" activeClassName="bg-primarylight dark:bg-cashmere-400">
                       <CommentSVG />
                       <div className="hidden md:block text-black font-bold dark:text-white text-xs">Contact Me</div>
                     </NavLink>
@@ -198,7 +184,7 @@ export default function App () {
 
 
                 <div className="py-4">
-                  <div className="hidden lg:block uppercase font-bold text-grey-darker text-xs px-4 py-2">
+                  <div className="hidden md:block uppercase font-bold text-grey-darker text-xs px-4 py-2">
                     Controls
                   </div>
 
@@ -215,7 +201,9 @@ export default function App () {
                         <div className="block bg-gray-600 w-8 h-5 rounded-full"></div>
                         <div className="dot absolute left-1 top-1 bg-white w-3 h-3 rounded-full transition"></div>
                       </div>
-                      {colorTheme === "light" ? "Dark" : "Light"} Mode
+                      <div className="hidden md:block">
+                        {colorTheme === "light" ? "Dark" : "Light"} Mode
+                      </div>
                     </label>
                   </div>
                 </div>

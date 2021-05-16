@@ -1,3 +1,4 @@
+import {useState, setState} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,10 +7,10 @@ import {
     NavLink
   } from "react-router-dom";
 
-export default function MobileMenuButton(){
+function MobileMenuButton({ menuOpened, setMenuOpened }){
   return(
     <div className="mobile-menu-button-container">
-      <button type="button" className="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false">
+      <button type="button" className="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" onClick={() => setMenuOpened(!menuOpened)}>
         <span className="sr-only">Open main menu</span>
 
         <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -23,3 +24,8 @@ export default function MobileMenuButton(){
     </div>
     )
 }
+MobileMenuButton.defaultProps = {
+  menuOpened: false,
+  setMenuOpened: null
+}
+export default MobileMenuButton;
