@@ -17,8 +17,14 @@ export default function Blogs() {
       });
   }, [])
   
+  const consoleBlogPosts = (posts) => {
+    console.log(posts)
+  }
+  
   const displayBlogPost = (posts) => {
     if (posts.length === 0) return null;
+    
+    console.log(posts)
     
     return posts.map((post, index) => (
       
@@ -42,7 +48,29 @@ export default function Blogs() {
   }
   
   return (
-    <div className="flex flex-col ml-10">
+    <div className="container px-7 h-v-100">
+    
+      <div className="max-w-100 px-5 py-10 rounded-xl text-center bg-gray dark:bg-merlin dark:text-pampas shadow-xl lg:flex justify-center overflow-y-auto">
+        <div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="lg:text-center">
+              <h2 className="text-base text-primarylight font-semibold tracking-wide uppercase">Nicola Scribbles</h2>
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-200 sm:text-4xl">
+                Full Stack Software Engineer
+              </p>
+              <p className="mt-4 max-w-2xl text-xl text-gray-900 dark:text-gray-100 lg:mx-auto">
+                The one stop shop for all things needed to build a successful website or application. I bring a unique perspective because my brain loves to exercise hymespherical harmony.
+              </p>
+            </div>
+
+            <div className="mt-10">
+              {consoleBlogPosts(posts)}
+              {displayBlogPost(posts)}
+            </div>
+          </div>
+        </div>
+      </div>
+    
       <div className="w-full h-96 bg-gradient-rt from-cashmere to-cashmere-700">
         <div className="title text-2xl font-mono mb-4">
           Blogs
