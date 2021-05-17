@@ -1,6 +1,7 @@
 const dotenv = require('dotenv').config();
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const jwt = require('express-jwt');
 const jsonwebtoken = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
@@ -40,8 +41,8 @@ app.get('/cookies', (req, res) => {
   res.json(req.cookies)
 })
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 
 // HTTP request logger
 app.use(morgan('tiny'));
