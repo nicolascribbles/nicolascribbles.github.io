@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import {convertFromRaw} from 'draft-js';
+import {stateToHTML} from 'draft-js-export-html';
 import axios from 'axios';
 
 export default function Blogs() {
@@ -28,21 +30,20 @@ export default function Blogs() {
     
     return posts.map((post, index) => (
       
-      <div key={index} className="flex flex-col md:flex-row overflow-hidden bg-gray dark:bg-merlin dark:text-white rounded-lg shadow-xl  mt-4 w-100 mx-2">
-        <div className="h-64 w-auto md:w-1/2">
-          <img className="inset-0 h-full w-full object-cover object-center" src={post.img} />
+      <div key={index} className="flex flex-col overflow-hidden bg-gradient-to-br to-cashmere dark:to-purple-400 from-cashmere-700 shadow-xl dark:text-white rounded-lg shadow-xl  mt-4 w-100 mx-2">
+        <div className="flex flex-col md:flex-row">
+          <div className="h-64 w-auto md:w-1/2">
+            <img className="inset-0 h-full w-full object-cover object-center" src={post.img} />
+          </div>
+          <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
+            <h3 class="font-semibold text-lg leading-tight truncate">{post.title}</h3>
+            <div className="text-clamp" dangerouslySetInnerHTML={{__html: stateToHTML(convertFromRaw(JSON.parse(post.body)))}} />
+            <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
+              Nicola Reyes
+            </p>
+          </div>
         </div>
-        <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
-          <h3 class="font-semibold text-lg leading-tight truncate">{post.title}</h3>
-          <p class="mt-2">
-            {post.content}
-          </p>
-          <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
-            Nicola Reyes &bull; {post.date}
-          </p>
-        </div>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
+      
       </div>
     ));
   }
@@ -64,60 +65,8 @@ export default function Blogs() {
             </div>
 
             <div className="mt-10">
-              {consoleBlogPosts(posts)}
               {displayBlogPost(posts)}
             </div>
-          </div>
-        </div>
-      </div>
-    
-      <div className="w-full h-96 bg-gradient-rt from-cashmere to-cashmere-700">
-        <div className="title text-2xl font-mono mb-4">
-          Blogs
-        </div>
-      </div>
-    
-      <div className="w-full flex flex-col justify-start items-start">
-        <div className="container w-100 lg:w-4/5 mx-auto flex flex-col">
-          {displayBlogPost(posts)}
-        </div>
-      </div>
-
-      <div className="lg:flex md:flex xl:justify-around sm:flex flex-wrap md:justify-around sm:justify-around lg:justify-around">
-        <div className="xl:w-1/3 sm:w-5/12 sm:max-w-xs relative mb-32 lg:mb-20 xl:max-w-sm lg:w-1/2 w-11/12 mx-auto sm:mx-0">
-          <div className="shadow h-64 rounded z-10">
-            <img src="https://cdn.tuk.dev/assets/photo-1573451444472-7b0b275ab824.jfif" alt="" className="h-full w-full object-cover overflow-hidden rounded" />
-          </div>
-          <div className="p-6 shadow-lg w-11/12 mx-auto -mt-20 bg-white rounded z-20 relative">
-            <p className="uppercase text-sm text-cashmere-600 text-center pb-3">VEHICLE</p>
-            <p className="text-lg text-gray-800 text-center pb-3">The way I drive and handle a car, is an expression of my inner feeling.</p>
-            <p className="text-sm text-gray-800 text-center">
-              May 13, 2019 by <a href="javascript:void(0)"><span className="text-cashmere-600 cursor-pointer">Silene Cox</span></a>
-            </p>
-          </div>
-        </div>
-        <div className="xl:w-1/3 sm:w-5/12 sm:max-w-xs relative mb-32 lg:mb-20 xl:max-w-sm lg:w-1/2 w-11/12 mx-auto sm:mx-0">
-          <div className="shadow h-64 rounded">
-            <img src="https://cdn.tuk.dev/assets/photo-1544476915-ed1370594142.jfif" alt="" className="h-full w-full object-cover overflow-hidden rounded" />
-          </div>
-          <div className="p-6 shadow-lg w-11/12 mx-auto -mt-20 bg-white rounded z-20 relative">
-            <p className="uppercase text-sm text-cashmere-600 text-center pb-3">Work</p>
-            <p className="text-lg text-gray-800 text-center pb-3">I'm a greater believer in luck, and I find the harder I work the more I have of it.</p>
-            <p className="text-sm text-gray-800 text-center">
-              May 13, 2019 by <a href="javascript:void(0)"><span className="text-cashmere-600 cursor-pointer">Sansa Rollins</span></a>
-            </p>
-          </div>
-        </div>
-        <div className="xl:w-1/3 sm:w-5/12 sm:max-w-xs relative mb-32 lg:mb-20 xl:max-w-sm lg:w-1/2 w-11/12 mx-auto sm:mx-0">
-          <div className="shadow h-64 rounded">
-            <img src="https://cdn.tuk.dev/assets/photo-1462331940025-496dfbfc7564.jfif" alt="" className="h-full w-full object-cover overflow-hidden rounded" />
-          </div>
-          <div className="p-6 shadow-lg w-11/12 mx-auto -mt-20 bg-white rounded z-20 relative">
-            <p className="uppercase text-sm text-cashmere-600 text-center pb-3">Productivity</p>
-            <p className="text-lg text-gray-800 text-center pb-3">Productivity is being able to do things that you were never able to do before.</p>
-            <p className="text-sm text-gray-800 text-center">
-                  May 13, 2019 by <a href="javascript:void(0)"><span className="text-cashmere-600 cursor-pointer">Ashley Wilson</span></a>
-            </p>
           </div>
         </div>
       </div>
