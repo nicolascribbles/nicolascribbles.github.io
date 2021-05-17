@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import { convertToHTML } from 'draft-convert';
+import DOMPurify from 'dompurify';
 
 import axios from 'axios';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -9,10 +11,9 @@ class BlogDashboard extends React.Component {
 
   state = {
     title: '',
-    url: '',
-    body: '',
+    img: '',
     posts: [],
-    editorState:  EditorState.createEmpty()
+    body:  EditorState.createEmpty()
   };
 
   componentDidMount = () => {
@@ -35,14 +36,19 @@ class BlogDashboard extends React.Component {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
-
+  onEditorStateChange = (body) => {
+    console.log(body);
+    this.setState({
+      body
+    });
+  };
 
   submit = (event) => {
     event.preventDefault();
     
     const payload = {
       title: this.state.title,
-      url: this.state.url,
+      img: this.state.img,
       body: this.state.body
     }
     
@@ -64,20 +70,38 @@ class BlogDashboard extends React.Component {
   resetUserInputs = () => {
     this.setState({
       title: '',
-      url: '',
-      body: ''
+      img: ''
     })
   }
   
+  convertContentToHTML = (post) => {
+    convertToHTML(post.body[0].getCurrentContent());
+  }
+  createMarkup = (html) => {
+    return  {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
   displayBlogPost = (posts) => {
     if (posts.length === 0) return null;
     
-    return posts.map((post, index) => (
-      <div key={index}>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
-      </div>
-    ));
+    posts.map((post, index) => {
+      
+      if (post.body[0].includes('') === false) {
+        converted = convertContentToHTML(post);
+        return (
+          <div key={index}>
+            <h3>{post.title}</h3>
+            <div className="blog-content" dangerouslySetInnerHTML={createMarkup(converted)}>
+          </div>
+        )} else {
+          return (
+          <div key={index}>
+            <h3>{post.title}</h3>
+            <p>{post.body[0]}</p>
+          </div>
+         )}
+    });
   }
 
   render() {
@@ -95,25 +119,18 @@ class BlogDashboard extends React.Component {
           <div className="form-input">
             <input 
               type="text"
-              name="url"
-              value={this.state.url}
+              name="img"
+              value={this.state.img}
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-input">
-            <textarea
-              name="body"
-              cols="30"
-              rows="10"
-              value={this.state.body}
-              onChange={this.handleChange} />
-          </div>
           <Editor
-            editorState={this.state.editorState}
+            editorState={this.state.body}
+            name="body"
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
             editorClassName="editorClassName"
-            onEditorStateChange={this.handleChange}
+            onEditorStateChange={this.onEditorStateChange}
           />
           <button>Submit</button>
         </form>
