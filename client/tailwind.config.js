@@ -77,12 +77,14 @@ module.exports = {
     },
   },
   variants: {
+    lineClamp: ['responsive', 'hover'],
     extend: {
       backgroundColor: ["active"],
       visibility: ['dark']
     },
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/forms')
   ],
 }

@@ -33,7 +33,22 @@ code {
   z-index: 1;
   box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-
+.text-clamp {
+  max-height: 7rem;
+  margin: 1rem 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: break-spaces;
+}
+.text-clamp > p ~ p {
+  display: none !important;
+}
+.text-clamp > p {
+  display: block;
+  text-overflow: ellipsis;
+  max-height: 7rem;
+  overflow: hidden;
+}
 
 ::-webkit-scrollbar-track
 {
